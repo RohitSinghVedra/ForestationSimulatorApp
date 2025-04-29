@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Cloud, Trees, FlaskConical, LineChart } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
+import RegionInfoCard from './RegionInfoCard';
 
 const Sidebar: React.FC = () => {
   const { 
@@ -72,6 +73,7 @@ const Sidebar: React.FC = () => {
           </li>
         ))}
       </ul>
+      <RegionInfoCard />
     </nav>
   );
 };
