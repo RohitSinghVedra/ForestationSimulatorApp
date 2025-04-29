@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.leaflet-control-container {
+  z-index: 999;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.leaflet-draw-toolbar {
+  margin-top: 0 !important;
+}
+
+.leaflet-draw-toolbar a {
+  background-color: white;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.leaflet-draw-toolbar a:hover {
+  background-color: #f3f4f6;
+}
+
+.leaflet-draw-actions {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.leaflet-draw-actions a {
+  color: #374151 !important;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.leaflet-draw-actions a:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Ensure Leaflet controls are above the map but below our custom controls */
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 999 !important;
+}
+
+/* Ensure Leaflet popups are above everything */
+.leaflet-popup {
+  z-index: 1001 !important;
+}
