@@ -54,28 +54,34 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <nav className="py-4">
-      <ul>
-        {menuItems.map((item) => (
-          <li key={item.id}>
-            <button
-              onClick={() => item.available && handleNavigation(item.id)}
-              className={`w-full flex items-center px-4 py-3 text-left ${
-                activeView === item.id
-                  ? 'bg-green-50 text-green-700 border-l-4 border-green-500'
-                  : 'text-gray-600 hover:bg-gray-50'
-              } ${!item.available ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-              disabled={!item.available}
-            >
-              <span className="inline-block mr-3">{item.icon}</span>
-              <span>{item.label}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
-      <RegionInfoCard />
-    </nav>
+    <div className="flex flex-col h-full justify-between">
+      <nav className="py-4">
+        <ul>
+          {menuItems.map((item) => (
+            <li key={item.id}>
+              <button
+                onClick={() => item.available && handleNavigation(item.id)}
+                className={`w-full flex items-center px-4 py-3 text-left ${
+                  activeView === item.id
+                    ? 'bg-green-50 text-green-700 border-l-4 border-green-500'
+                    : 'text-gray-600 hover:bg-gray-50'
+                } ${!item.available ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                disabled={!item.available}
+              >
+                <span className="inline-block mr-3">{item.icon}</span>
+                <span>{item.label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+  
+      <div className="p-4 border-t border-gray-200">
+        <RegionInfoCard />
+      </div>
+    </div>
   );
+  
 };
 
 export default Sidebar;
