@@ -4,15 +4,14 @@ import { useAppContext } from '../context/AppContext';
 import RegionInfoCard from './RegionInfoCard';
 
 const Sidebar: React.FC = () => {
-  const { 
-    activeView, 
-    setActiveView, 
-    selectedRegion, 
-    climateData, 
+  const {
+    activeView,
+    setActiveView,
+    selectedRegion,
+    climateData,
     landData,
-    simulationParams,
     simulationResults,
-    setIsMobileMenuOpen
+    setIsMobileMenuOpen,
   } = useAppContext();
 
   const menuItems = [
@@ -20,32 +19,32 @@ const Sidebar: React.FC = () => {
       id: 'map',
       label: 'Map Selection',
       icon: <MapPin />,
-      available: true
+      available: true,
     },
     {
       id: 'climate',
       label: 'Climate Data',
       icon: <Cloud />,
-      available: !!selectedRegion && !!climateData
+      available: !!selectedRegion && !!climateData,
     },
     {
       id: 'land',
       label: 'Land Analysis',
       icon: <Trees />,
-      available: !!selectedRegion && !!landData
+      available: !!selectedRegion && !!landData,
     },
     {
       id: 'simulation',
       label: 'Simulation Setup',
       icon: <FlaskConical />,
-      available: !!selectedRegion && !!climateData && !!landData
+      available: !!selectedRegion && !!climateData && !!landData,
     },
     {
       id: 'results',
       label: 'Simulation Results',
       icon: <LineChart />,
-      available: !!simulationResults
-    }
+      available: !!simulationResults,
+    },
   ] as const;
 
   const handleNavigation = (view: typeof activeView) => {
@@ -55,7 +54,13 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full justify-between">
-      <nav className="py-4">
+      {/* Top Area: Region Info */}
+      <div className="p-4 border-b border-gray-200">
+        <RegionInfoCard />
+      </div>
+
+      {/* Scrollable Menu */}
+      <nav className="py-4 flex-1 overflow-y-auto">
         <ul>
           {menuItems.map((item) => (
             <li key={item.id}>
@@ -75,13 +80,8 @@ const Sidebar: React.FC = () => {
           ))}
         </ul>
       </nav>
-  
-      <div className="p-4 border-t border-gray-200">
-        <RegionInfoCard />
-      </div>
     </div>
   );
-  
 };
 
 export default Sidebar;
