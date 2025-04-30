@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { AppContextType } from '../types/AppContextTypes';
+import { AppContextType, SelectedShape } from '../types/AppContextTypes';
 import { Region, ClimateData, LandData, SimulationParams, SimulationResult } from '../types';
 import {
   fetchClimateData,
@@ -12,11 +12,7 @@ import {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [selectedShape, setSelectedShape] = useState<{
-    center: { lat: number; lng: number };
-    radius: number;
-  } | null>(null);
-
+  const [selectedShape, setSelectedShape] = useState<SelectedShape | null>(null);
   const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
   const [climateData, setClimateData] = useState<ClimateData | null>(null);
   const [landData, setLandData] = useState<LandData | null>(null);
